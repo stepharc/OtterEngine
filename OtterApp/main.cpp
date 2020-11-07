@@ -14,16 +14,31 @@
 #include <cstdlib>
 #include <string>
 #include <iostream>
+#include <GL/glut.h>
 
 using namespace std;
 
-/*
- * 
- */
+// Display a rectangle
+void display(void)
+{
+    glClear(GL_COLOR_BUFFER_BIT);
+    glBegin(GL_POLYGON);
+        glVertex2f(-0.5, -0.5);
+        glVertex2f(-0.5, 0.5);
+        glVertex2f(0.5 , 0.5);
+        glVertex2f(0.5 , -0.5);
+    glEnd();
+    glutSwapBuffers();
+}
+
+// This is the main method of this
+// application
 int main(int argc, char** argv) 
 {
-    string lMessage = "Hello world !";
-    std::cout << lMessage << std::endl;
-    return 0;
+    glutInit(&argc, argv);
+    glutInitDisplayMode(GLUT_RGBA | GLUT_DOUBLE);
+    glutCreateWindow("Hello World");
+    glutDisplayFunc(display);
+    glutMainLoop();
 }
 
